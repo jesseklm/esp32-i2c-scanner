@@ -8,7 +8,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-int pins[] = {33, 35};  // pins to test
+// int pins[] = {33, 35};  // pins to test
+int pins[] = {SDA, SCL};  // test default pins
 
 void scanAddresses() {
   for (int address = 0x1; address <= 0x7F; address++) {
@@ -46,11 +47,19 @@ void scanPorts() {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
+#ifdef LOLIN_S2_PICO
+  digitalWrite(LED_BUILTIN, LOW);
+#else
   digitalWrite(LED_BUILTIN, HIGH);
+#endif
   Serial.begin(115200);
   while (!Serial)
     ;
+#ifdef LOLIN_S2_PICO
+  digitalWrite(LED_BUILTIN, HIGH);
+#else
   digitalWrite(LED_BUILTIN, LOW);
+#endif
   delay(1000);
   Serial.println("Scanning...");
   scanPorts();
