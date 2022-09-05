@@ -45,12 +45,16 @@ void scanPorts() {
 }
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
   Serial.begin(115200);
-  while (!Serial) delay(10);
+  while (!Serial)
+    ;
+  digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
   Serial.println("Scanning...");
   scanPorts();
-  Serial.println("done");
+  Serial.println("done.");
 }
 
 void loop() {
