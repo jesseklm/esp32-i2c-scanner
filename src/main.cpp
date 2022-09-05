@@ -47,19 +47,23 @@ void scanPorts() {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
+
 #ifdef LOLIN_S2_PICO
   digitalWrite(LED_BUILTIN, LOW);
 #else
   digitalWrite(LED_BUILTIN, HIGH);
 #endif
+
   Serial.begin(115200);
   while (!Serial)
     ;
+
 #ifdef LOLIN_S2_PICO
   digitalWrite(LED_BUILTIN, HIGH);
 #else
   digitalWrite(LED_BUILTIN, LOW);
 #endif
+
   delay(1000);
   Serial.println("Scanning...");
   scanPorts();

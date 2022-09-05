@@ -7,5 +7,5 @@
 ## Usage
 
 1. change `pins`-array to all pins you want to test
-2. set your board in `platformio.ini` (currently `lolin_s2_mini`)
+2. set your board in `platformio.ini` (currently `lolin_s2_mini` and `lolin_s2_pico`)
 3. build and upload
